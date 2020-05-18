@@ -38,14 +38,14 @@ export const NavLink = ({ text, url }) => (
 );
 
 export const Navigation = () => (
-  <nav class="--flex-horizontal">
+  <nav class="--flex-horizontal --flex-wrap">
     <a href="/" class="logo item --flex-center --no-underline --bold">
       P
     </a>
     <a href="/" class="item --no-underline --bold">
       Pepper Deals
     </a>
-    <ul class="--flex-horizontal item --extra-margin">
+    <ul class="--flex-horizontal --flex-wrap item --extra-margin">
       <NavLink text="hotukdeals.com" />
       <NavLink text="mydealz.de" />
       <NavLink text="promodescuentos.com" />

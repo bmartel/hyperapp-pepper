@@ -58,6 +58,10 @@ body {
   margin: 0 0.2rem;
 }
 
+.--flex-wrap {
+  flex-wrap: wrap;
+}
+
 .--flex-center {
   display: flex;
   align-items: center;
@@ -95,7 +99,7 @@ a:hover:not(.--no-underline) {
 nav {
   background-color: darkorange;
   color: black;
-  height: 1.6rem;
+  padding: 0.1rem 0 !important;
 }
 
 nav .item {

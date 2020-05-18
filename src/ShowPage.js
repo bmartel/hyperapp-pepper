@@ -1,5 +1,5 @@
 import { h } from "hyperapp";
 
 export default () => {
-  return <div>Show Page</div>;
+  return <div>Nothing to see here yet.</div>;
 };
