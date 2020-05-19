@@ -1,0 +1,9 @@
+ports:
+  - port: 3000
+    onOpen: open-preview
+tasks:
+  - init: npm i
+    command: npm start
+# github:
+#   prebuilds:
+#     pullRequestsFromForks: true
