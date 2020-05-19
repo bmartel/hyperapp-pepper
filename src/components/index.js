@@ -135,21 +135,18 @@ export const LazyThread = ({ thread, site, now }) => {
 };
 export const Spinner = () => <div class="spinner" />;
 
-export const Threads = ({ collection, loading, site, now }) => {
-  console.log(loading);
-  return (
-    <div>
-      <h1 class="content">
-        {site.charAt(0).toUpperCase() + site.slice(1)} threads{" "}
-        {loading && <Spinner />}
-      </h1>
-      <ol>
-        {collection.map((thread, index) => (
-          <li key={index}>
-            <LazyThread thread={thread} site={site} now={now} />
-          </li>
-        ))}
-      </ol>
-    </div>
-  );
-};
+export const Threads = ({ collection, loading, site, now }) => (
+  <div>
+    <h1 class="content">
+      {site.charAt(0).toUpperCase() + site.slice(1)} threads{" "}
+      {loading && <Spinner />}
+    </h1>
+    <ol>
+      {collection.map((thread, index) => (
+        <li key={index}>
+          <LazyThread thread={thread} site={site} now={now} />
+        </li>
+      ))}
+    </ol>
+  </div>
+);
