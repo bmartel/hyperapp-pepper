@@ -1,3 +1,10 @@
+:root {
+  --color-primary: #1d1f20;
+  --color-secondary: #ff9300;
+  --color-brand: #ffffff;
+  --color-text: rgba(255, 255, 255, 0.8);
+}
+
 html {
   box-sizing: border-box;
   font-size: 16px;
@@ -20,6 +27,15 @@ body {
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    padding: 1rem;
+    margin: 0 auto;
+    width: 85%;
+    max-width: 768px;
+  }
 }
 
 .--small {
@@ -97,8 +113,8 @@ a:hover:not(.--no-underline) {
 }
 
 nav {
-  background-color: darkorange;
-  color: black;
+  background-color: var(--color-primary);
+  color: var(--color-text);
   padding: 0.1rem 0 !important;
 }
 
@@ -110,11 +126,16 @@ nav .item.--extra-margin {
   margin: 0 0.6rem;
 }
 
+.brand {
+  color: var(--color-brand);
+}
+
 .logo {
   width: 22px;
   height: 22px;
   font-size: 18px;
   color: white;
+  background-color: var(--color-secondary);
   border: 1px white solid;
 }
 
@@ -193,7 +214,7 @@ button.--link:hover {
   height: 1.5rem;
   border: 0.2rem solid transparent;
   border-color: #eee;
-  border-top-color: darkorange;
+  border-top-color: var(--color-primary);
   border-radius: 50%;
   animation: loadingspin 1s linear infinite;
   margin-left: 1rem;

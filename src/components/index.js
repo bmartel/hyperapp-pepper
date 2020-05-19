@@ -42,7 +42,7 @@ export const Navigation = () => (
     <a href="/" class="logo item --flex-center --no-underline --bold">
       P
     </a>
-    <a href="/" class="item --no-underline --bold">
+    <a href="/" class="item brand --no-underline --bold">
       Pepper Deals
     </a>
     <ul class="--flex-horizontal --flex-wrap item --extra-margin">
@@ -50,6 +50,7 @@ export const Navigation = () => (
       <NavLink text="mydealz.de" />
       <NavLink text="promodescuentos.com" />
       <NavLink text="pepper.pl" />
+      <NavLink text="nl.pepper.com" />
       <NavLink text="preisjaeger.at" />
       <NavLink text="pelando.com.br" />
     </ul>

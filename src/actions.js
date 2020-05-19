@@ -10,7 +10,7 @@ const updatePage = (state, data) => ({
 });
 
 const apiUrl = (site = "hotukdeals.com") =>
-  `https://xenodochial-kirch-761cfe.netlify.app/.netlify/functions/api?site=${site}`;
+  `https://pepper-proxy.netlify.app/.netlify/functions/api?site=${site}`;
 
 const GetThreads = (state, site) => [
   updatePage(state, { site, loading: true }),
