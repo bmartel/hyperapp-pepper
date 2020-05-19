@@ -8,7 +8,7 @@
     "hyperapp-page-router": "^0.1.1"
   },
   "devDependencies": {
-    "hyperapp-scripts": "^0.4.0"
+    "@martel/hyperapp-scripts": "^0.5.2"
   },
   "scripts": {
     "start": "hyperapp-scripts start",
