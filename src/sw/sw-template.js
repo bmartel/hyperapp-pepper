@@ -4,7 +4,7 @@ if ("function" === typeof importScripts) {
   );
   if (workbox) {
     /* injection point for manifest files.  */
-    workbox.precaching.precacheAndRoute([]);
+    workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
 
     workbox.routing.registerNavigationRoute(
       workbox.precaching.getCacheKeyForURL("/index.html"),

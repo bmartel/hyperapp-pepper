@@ -1,6 +1,5 @@
 const workboxBuild = require("workbox-build");
 
-console.log(workboxBuild.injectManifest);
 // NOTE: This should be run *AFTER* all your assets are built
 const buildSW = () => {
   // This will return a Promise
