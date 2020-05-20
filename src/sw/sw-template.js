@@ -4,34 +4,14 @@ importScripts(
 
 workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
 
-workbox.routing.registerNavigationRoute("/index.html", {
-  blacklist: [/^\/_/, /\/[^\/]+\.[^\/]+$/],
-});
-
 workbox.routing.registerRoute(
-  /\.(?:png|gif|jpg|jpeg)$/,
-  new workbox.strategies.cacheFirst({
-    cacheName: "static-images",
+  ({ url }) => url.pathname.startsWith("https://pepper-proxy"),
+  new workbox.strategies.StaleWhileRevalidate({
+    cacheName: "api-cache",
     plugins: [
-      new workbox.expiration.ExpirationPlugin({
-        maxEntries: 60,
-        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+      new workbox.cacheableResponse.CacheableResponsePlugin({
+        statuses: [200, 404],
       }),
     ],
   })
 );
-
-// non precache
-workbox.routing.registerRoute(
-  /\.(?:js|css)$/,
-  new workbox.strategies.CacheFirst({
-    cacheName: "static-resources",
-    plugins: [
-      new workbox.expiration.ExpirationPlugin({
-        maxEntries: 20,
-        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
-      }),
-    ],
-  })
-);
-
