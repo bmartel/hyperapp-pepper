@@ -214,7 +214,7 @@ button.--link:hover {
   height: 1.5rem;
   border: 0.2rem solid transparent;
   border-color: #eee;
-  border-top-color: var(--color-primary);
+  border-top-color: var(--color-secondary);
   border-radius: 50%;
   animation: loadingspin 1s linear infinite;
   margin-left: 1rem;

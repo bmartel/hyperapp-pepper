@@ -3,7 +3,7 @@ import { router as Router } from "hyperapp-page-router";
 import { loadIndex, loadShow } from "./actions";
 import "./index.css";
 import App from "./App";
-import * as serviceWorker from "./serviceWorker";
+import * as serviceWorker from "./sw";
 
 const initialState = {
   page: { data: {}, error: {}, loading: true },

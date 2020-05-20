@@ -1,42 +1,45 @@
 {
-  "name": "hyperd",
-  "version": "0.0.0",
-  "private": true,
-  "dependencies": {
-    "@martel/hyperapp-fx": "^2.0.0-beta.4",
-    "hyperapp": "^2.0.4",
-    "hyperapp-page-router": "^0.1.1"
-  },
-  "devDependencies": {
-    "@martel/hyperapp-scripts": "^0.5.2"
-  },
-  "scripts": {
-    "start": "hyperapp-scripts start",
-    "build": "hyperapp-scripts build",
-    "test": "hyperapp-scripts test"
-  },
-  "eslintConfig": {
-    "extends": "react-app",
-    "rules": {
-      "react/react-in-jsx-scope": "off",
-      "no-unused-vars": [
-        "warn",
-        {
-          "varsIgnorePattern": "^h$"
+    "name": "hyperd",
+    "version": "0.0.0",
+    "private": true,
+    "dependencies": {
+        "@martel/hyperapp-fx": "^2.0.0-beta.4",
+        "hyperapp": "^2.0.4",
+        "hyperapp-page-router": "^0.1.1"
+    },
+    "devDependencies": {
+        "@martel/hyperapp-scripts": "^0.5.2",
+        "workbox-build": "^5.1.3"
+    },
+    "scripts": {
+        "start": "hyperapp-scripts start",
+        "build": "hyperapp-scripts build && npm run build-sw && npm run clean-cra-sw",
+        "clean-cra-sw": "rm -f build/precache-manifest.*.js && rm -f build/service-worker.js",
+        "test": "hyperapp-scripts test",
+        "build-sw": "node ./src/sw/sw-build.js"
+    },
+    "eslintConfig": {
+        "extends": "react-app",
+        "rules": {
+            "react/react-in-jsx-scope": "off",
+            "no-unused-vars": [
+                "warn",
+                {
+                    "varsIgnorePattern": "^h$"
+                }
+            ]
         }
-      ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
     }
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
 }
