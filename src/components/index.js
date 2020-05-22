@@ -64,28 +64,34 @@ const Poster = ({ poster }) => (
 );
 
 export const ThreadData = ({ site, thread, now }) => {
-  const url = thread.short_uri || `/${site}/t/${thread.thread_id}`;
+  const url = thread.short_uri;
+  const internalUrl = `/${site}/t/${thread.thread_id}`;
   return (
     <div class="thread">
       <a href={url} class="--no-underline">
         {thread.title}
       </a>
-      {thread.short_uri && (
+      {url && (
         <span class="--small">
           {" ( "}
-          <a href={thread.short_uri} class="--light">
-            {thread.short_uri}
+          <a href={url} class="--light">
+            {url}
           </a>
           {" )"}
         </span>
       )}
       <ul class="--flex-horizontal --light --block --small --unbreakable">
-        <li>{thread.temperature_rating}°</li>
-        <li>{thread.poster && <Poster poster={thread.poster} />}</li>
         <li>
-          <a href={`/${site}/t/${thread.thread_id}`}>
+          {thread.temperature_rating}
+          {"°  "}
+          {thread.poster && <Poster poster={thread.poster} />}
+          {"  "}
+          <a href={internalUrl}>
             <FuzzyTime time={thread.updated} now={now} />
           </a>
+        </li>
+        <li>
+          <a href={internalUrl}>{thread.comment_count} comments</a>
         </li>
       </ul>
     </div>
@@ -106,10 +112,9 @@ export const ThreadShadow = () => (
     ></div>
     <ul class="--flex-horizontal --light --block --small --unbreakable">
       <li>
-        <div class="shadow --small" style={{ width: "22px" }}></div>
-      </li>
-      <li>
+        <div class="shadow --small" style={{ width: "30px" }}></div>
         <div class="shadow --small" style={{ width: "100px" }}></div>
+        <div class="shadow --small" style={{ width: "60px" }}></div>
       </li>
       <li>
         <div class="shadow --small" style={{ width: "100px" }}></div>
@@ -148,5 +153,37 @@ export const Threads = ({ collection, loading, site, now }) => (
         </li>
       ))}
     </ol>
+  </div>
+);
+const emojis = {
+  happy: "",
+  sad: "", // todo!
+};
+export const Comments = ({ items, loading, site, now }) => (
+  <div>
+    {items.map((comment, index) => (
+      <div key={index} class="comment">
+        <span class="attribution --small --light">
+          {comment.poster.username}
+          <a class="author-link" href={comment.permalink}>
+            <FuzzyTime time={comment.posted} now={now} />
+          </a>
+        </span>
+        {comment.content.map((content) => {
+          switch (content._type) {
+            case "string":
+              return content.content
+                .split("<br />")
+                .map((c) => <span>{c}</span>);
+            case "smiley":
+              return emojis[content.name] || null;
+            case "image":
+              return <img src={content.uri} />;
+            default:
+              return null;
+          }
+        })}
+      </div>
+    ))}
   </div>
 );
